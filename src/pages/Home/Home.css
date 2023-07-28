@@ -3,7 +3,7 @@
 }
 
 .archive_btn {
-  background-color: #fdba74;
+  background-color: #BDB5F5;
   padding: 0.5rem;
   border-radius: 0.8rem;
   color: black;
@@ -19,4 +19,14 @@
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+}
+.btn {
+  background-color: #BDB5F5;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  font: inherit;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  width: fit-content;
 }

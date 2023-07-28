@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Home.css";
-import { BsFillArchiveFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { BsFillArchiveFill } from "react-icons/bs";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useData } from "../../context/HabitContext";
 import HabitList from "./componentz/HabitList/HabitList";
 import AddHabitModal from "./componentz/AddHabitModal/AddHabitModal";
@@ -30,8 +31,11 @@ const Home = () => {
             </Link>
           </span>
         </h3>
+        <button onClick={() => setShowAddHabitModal(true)} className="btn">
+          {" "}
+          <AiOutlinePlusCircle /> Add habit
+        </button>
       </div>
-      <button onClick={() => setShowAddHabitModal(true)}>Add habit</button>
       <HabitList list={habits} />
       {showAddHabitModal && (
         <div className="modal">
