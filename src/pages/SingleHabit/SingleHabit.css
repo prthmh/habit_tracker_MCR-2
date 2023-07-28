@@ -1,0 +1,15 @@
+.single_habit {
+  margin: 0 35rem;
+  margin-top: 2rem;
+  border: 1px solid #bdb5f5;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.info {
+  font-size: 17px;
+}
+.action_btns {
+  display: flex;
+  justify-content: space-between;
+}

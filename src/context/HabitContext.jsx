@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { HabitReducer } from "../reducer";
 
 export const HabitContext = createContext();
@@ -17,7 +17,7 @@ export const HabitProvider = ({ children }) => {
         id: 2,
         name: "Drink water",
         repeat: "Daily",
-        goal: "10 times daily",
+        goal: "4 times daily",
         timeOfDay: "Anytime",
         start: "Today",
       },
@@ -26,9 +26,17 @@ export const HabitProvider = ({ children }) => {
   };
 
   const [habitState, habitDispatch] = useReducer(HabitReducer, intialState);
+  const [showAddHabitModal, setShowAddHabitModal] = useState(false);
 
   return (
-    <HabitContext.Provider value={{ habitState, habitDispatch }}>
+    <HabitContext.Provider
+      value={{
+        habitState,
+        habitDispatch,
+        showAddHabitModal,
+        setShowAddHabitModal,
+      }}
+    >
       {children}
     </HabitContext.Provider>
   );

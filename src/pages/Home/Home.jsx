@@ -10,8 +10,10 @@ import AddHabitModal from "./componentz/AddHabitModal/AddHabitModal";
 const Home = () => {
   const {
     habitState: { habits },
+    showAddHabitModal,
+    setShowAddHabitModal,
   } = useData();
-  const [showAddHabitModal, setShowAddHabitModal] = useState(false);
+  //   const [showAddHabitModal, setShowAddHabitModal] = useState(false);
   return (
     <div>
       <div className="header">

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddHabitModal.css";
 import { useData } from "../../../../context/HabitContext";
 
-const AddHabitModal = ({ setShowAddHabitModal }) => {
+const AddHabitModal = ({ setShowAddHabitModal, editHabit }) => {
   const {
     habitState: { habits },
     habitDispatch,
@@ -16,6 +16,12 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
     start: "",
   });
   const [showErr, setShowErr] = useState(false);
+
+  useEffect(() => {
+    if (editHabit) {
+      setHabitData(editHabit);
+    }
+  }, []);
 
   const handleHabitChange = (e) => {
     setHabitData((prevState) => ({
@@ -41,7 +47,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
 
   return (
     <div className="add_habit">
-      <h2 style={{ margin: "0" }}>Add Habit</h2>
+      <h2 style={{ margin: "0" }}>{editHabit ? "Edit Habit" : "Add Habit"}</h2>
       <form className="habit_form" onSubmit={handleSubmit}>
         <label className="habit_label">
           Name
@@ -59,6 +65,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
           <select
             name="repeat"
             onChange={handleHabitChange}
+            value={habitData.repeat}
             className="habit_dropdown"
           >
             <option value="">Select</option>
@@ -72,6 +79,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
           <select
             name="timeOfDay"
             onChange={handleHabitChange}
+            value={habitData.timeOfDay}
             className="habit_dropdown"
           >
             <option value="">Select</option>
@@ -79,6 +87,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
             <option value="Afternoon">Afternoon</option>
             <option value="Evening">Evening</option>
             <option value="Night">Night</option>
+            <option value="Anytime">Anytime</option>
           </select>
         </label>
         <label className="habit_label">
@@ -86,6 +95,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
           <select
             name="goal"
             onChange={handleHabitChange}
+            value={habitData.goal}
             className="habit_dropdown"
           >
             <option value="">Select</option>
@@ -100,6 +110,7 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
           <select
             name="start"
             onChange={handleHabitChange}
+            value={habitData.start}
             className="habit_dropdown"
           >
             <option value="">Select</option>
@@ -111,9 +122,13 @@ const AddHabitModal = ({ setShowAddHabitModal }) => {
         {showErr && (
           <span style={{ color: "red" }}>Select Appropriate options</span>
         )}
-        <button type="submit">Add Habit</button>
+        <button type="submit" className="btn">
+          Add Habit
+        </button>
+        <button className="btn" onClick={() => setShowAddHabitModal(false)}>
+          Cancel
+        </button>
       </form>
-      <button onClick={() => setShowAddHabitModal(false)}>Cancel</button>
     </div>
   );
 };

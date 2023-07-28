@@ -1,6 +1,7 @@
 import React from "react";
 import "./HabitList.css";
 import { useData } from "../../../../context/HabitContext";
+import { Link } from "react-router-dom";
 
 const HabitList = ({ list }) => {
   const {
@@ -9,9 +10,19 @@ const HabitList = ({ list }) => {
   return (
     <div className="list">
       {habits?.map((item) => (
-        <div className="item" key={item.id}>
-          <h3>{item.name}</h3>
-        </div>
+        <Link
+          to={`/habit/${item.id}`}
+          key={item.id}
+          style={{
+            textDecoration: "none",
+            font: "inherit",
+            color: "inherit",
+          }}
+        >
+          <div className="item">
+            <h3>{item.name}</h3>
+          </div>
+        </Link>
       ))}
     </div>
   );
