@@ -1,0 +1,11 @@
+.header {
+  text-align: center;
+}
+
+.archive_btn {
+  background-color: #fdba74;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  color: black;
+  width: fit-content;
+}
