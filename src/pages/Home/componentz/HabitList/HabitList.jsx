@@ -1,11 +1,14 @@
 import React from "react";
 import "./HabitList.css";
+import { useData } from "../../../../context/HabitContext";
 
 const HabitList = ({ list }) => {
-  console.log("j", list);
+  const {
+    habitState: { habits },
+  } = useData();
   return (
     <div className="list">
-      {list?.map((item) => (
+      {habits?.map((item) => (
         <div className="item" key={item.id}>
           <h3>{item.name}</h3>
         </div>

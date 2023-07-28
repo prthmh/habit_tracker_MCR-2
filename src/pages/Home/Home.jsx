@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import { BsFillArchiveFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useData } from "../../context/HabitContext";
 import HabitList from "./componentz/HabitList/HabitList";
+import AddHabitModal from "./componentz/AddHabitModal/AddHabitModal";
 
 const Home = () => {
   const {
     habitState: { habits },
   } = useData();
-  console.log(habits);
+  const [showAddHabitModal, setShowAddHabitModal] = useState(false);
   return (
     <div>
       <div className="header">
@@ -30,7 +31,13 @@ const Home = () => {
           </span>
         </h3>
       </div>
+      <button onClick={() => setShowAddHabitModal(true)}>Add habit</button>
       <HabitList list={habits} />
+      {showAddHabitModal && (
+        <div className="modal">
+          <AddHabitModal setShowAddHabitModal={setShowAddHabitModal} />
+        </div>
+      )}
     </div>
   );
 };
